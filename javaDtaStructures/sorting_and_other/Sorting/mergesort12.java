@@ -1,88 +1,66 @@
-// Merge sort in Java
-
-class MergeSort {
-
-  // Merge two subarrays L and M into arr
-  void merge(int arr[], int p, int q, int r) {
-    int n1 = q - p + 1;
-    int n2 = r - q;
-    System.out.println(n1 + " n1 " + p + " p "+ "q "+ q + " r "+r);
-    System.out.println(n2 + " n2");
-    int L[] = new int[n1];
-    int M[] = new int[n2];
-
-    for (int i = 0; i < n1; i++){
-      L[i] = arr[p + i];
-    }
-    for (int j = 0; j < n2; j++){
-      M[j] = arr[q + 1 + j];
-    }
-
-    // Maintain current index of sub-arrays and main array
-    int i, j, k;
-    i = 0;
-    j = 0;
-    k = p;
-
-    // Until we reach either end of either L or M, pick larger among
-    // elements L and M and place them in the correct position at A[p..r]
-    while (i < n1 && j < n2) {
-      if (L[i] <= M[j]) {
-        arr[k] = L[i];
-        i++;
-      } else {
-        arr[k] = M[j];
-        j++;
-      }
-      k++;
-    }
-
-    // When we run out of elements in either L or M,
-    // pick up the remaining elements and put in A[p..r]
-    while (i < n1) {
-      arr[k] = L[i];
-      i++;
-      k++;
-    }
-
-    while (j < n2) {
-      arr[k] = M[j];
-      j++;
-      k++;
-    }
-  }
-
-  // Divide the array into two subarrays, sort them and merge them
-  void mergeSort(int arr[], int l, int r) {
-    if (l < r) {
-      // m is the point where the array is divided into two subarrays
-      int m = l + (r - l) / 2;
-      mergeSort(arr, l, m);
-      mergeSort(arr, m + 1, r);
-      // Merge the sorted subarrays
-      merge(arr, l, m, r);
-    }
-  }
-
-  // Print the array
-  public void printArray(int arr[]) {
-    int n = arr.length;
-    for (int i = 0; i < n; ++i) System.out.print(arr[i] + " ");
-    System.out.println();
-  }
-  // Driver program
-
-}
-
 public class mergesort12 {
 
+  static void merge(int arr12[], int p, int q, int r) {
+    int m = q - p + 1;
+    int n = r - q;
+    int M[] = new int[m];
+    int N[] = new int[n];
+    //Storing the data in the array One by one;
+    for (int i = 0; i < m; i++) {
+      M[i] = arr12[p + i];
+    }
+    for (int k = 0; k < n; k++) {
+      N[k] = arr12[q + 1 + k];
+    }
+    //Making the final form
+    int i = 0;
+    int j = 0;
+    int point = p;
+    while(i<m && j<n){
+        if(M[i] >= N[j]){
+            arr12[point] = N[j];
+            j += 1;
+        }
+        else{
+            arr12[point] = M[i];
+            i += 1;
+        }
+        point += 1;
+    }
+
+    //Inserting the remaining element into the array
+    while(i<m){
+        arr12[point] = M[i];
+        i++;
+        point ++;
+    }
+    while(j<n){
+        arr12[point] = N[j];
+        j++;
+        point ++;
+    }
+
+  }
+
+  static void mergesort(int arr12[], int l, int r) {
+    if (l < r) {
+      int m = l + (r-l) / 2;
+      mergesort(arr12, l, m);
+      mergesort(arr12, m+1, r);
+      merge(arr12, l, m, r);
+    }
+  }
+
+  static void printArry(int arr12[]) {
+    for (int i : arr12) {
+      System.out.print(i);
+      System.out.print(" ");
+    }
+  }
+
   public static void main(String args[]) {
-    int arr[] = { 6, 5, 12, 10, 9, 1 };
-
-    MergeSort ob = new MergeSort();
-    ob.mergeSort(arr, 0, arr.length - 1);
-
-    System.out.println("Sorted array:");
-    ob.printArray(arr);
+    int arr12[] = { 9, 5, 2, 7, 1, 80, 6 };
+    mergesort(arr12, 0, arr12.length - 1);
+    printArry(arr12);
   }
 }

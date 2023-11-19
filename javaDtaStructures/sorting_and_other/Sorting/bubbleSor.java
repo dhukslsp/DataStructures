@@ -1,10 +1,9 @@
 public class bubbleSor{
-	public static void main(String args[]){
-		int arr[] = {-1,45,0,11,-9};
-		int k,i;
+	public static void main(String[] args) {
+		int arr[] = {4,45,0,2,45,34,23};
 		int temp;
-		for( k = arr.length-1;k>0;k--){
-			for(i = 0;i<k;i++){
+		for(int j = arr.length - 1;j>=0;j--){
+			for(int i = 0;i<j;i++){
 				if(arr[i]>arr[i+1]){
 					temp = arr[i];
 					arr[i] = arr[i+1];
@@ -12,10 +11,9 @@ public class bubbleSor{
 				}
 			}
 		}
-		// printing the array;
-		for(int l:arr){
-			System.out.print(l);
-			System.out.print(" ");
+		for(int elm:arr){
+			System.out.println(elm);
 		}
 	}
+	
 }

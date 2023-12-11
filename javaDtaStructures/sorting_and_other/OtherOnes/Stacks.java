@@ -1,8 +1,5 @@
 package javaDtaStructures.sorting_and_other.OtherOnes;
 
-import java.util.Stack;
-
-import javax.swing.plaf.synth.SynthLookAndFeel;
 
 public class Stacks {
     private int arr[];
